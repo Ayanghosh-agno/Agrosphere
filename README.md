@@ -129,8 +129,8 @@ By empowering farmers with tools to monitor, manage, and monetize their agricult
 
 - [Docusign Webhooks:](https://developers.docusign.com/platform/webhooks/)
 
- - Used to track real-time updates on the status of signing agreements.
- - Automatically triggers notifications or updates in AgroSphere, such as notifying users or sellers about agreement completions or pending actions or getting information for registration.
+  - Used to track real-time updates on the status of signing agreements.
+  - Automatically triggers notifications or updates in AgroSphere, such as notifying users or sellers about agreement completions or pending actions or getting information for registration.
    
 
 ### Other services used <a name="other-services-used"></a>
@@ -177,4 +177,4 @@ By empowering farmers with tools to monitor, manage, and monetize their agricult
 
 ### Solution Architecture <a name="solution-architecture"></a>
 
-![Solution Architecture]()
+![Solution Architecture](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/Agrosphere%20Readme%20Images/Agrosphere%20architecture.png)
