@@ -139,29 +139,18 @@ By empowering farmers with tools to monitor, manage, and monetize their agricult
 - <strong>IBM Cloud WatsonX AI:</strong>
   
   - Analyzes real-time sensor data from fields to provide AI-driven farming recommendations.
-  - Generates actionable insights for sustainable farming practices.
     
 - <strong>Salesforce Experience Cloud:</strong>
   
   - Hosts the AgroSphere website, enabling a seamless interface for authenticated and unauthenticated users.
-  - Manages marketplace features like product browsing, posting, and purchases.
-  - Farm insights and control in one place.
     
 - <strong>Salesforce Service Cloud:</strong>
   
-  - Real-time data from AgroSphere hardware is stored in a custom object.
-  - Scheduled Apex runs at 12:00 AM daily to calculate and store average sensor data.
-  - Scheduled Apex runs hourly to void agreements pending for more than 1 hour.
-  - Tracks user-reported issues and enables agent-user communication.
-  - Receives real-time updates on agreement statuses and updates Salesforce records.
-  - Stores signed agreements and approval documents in the related Salesforce records.
-  - Sends SMS and email alerts for key actions like agreement approvals, voids, and case updates.
+  - Operation, storing and backend stuffs are handled here.
   
 - <strong>NEXMO API SMS Services:</strong>
   
   - Sends updates to users for critical events, such as product posting acknowledgments and approvals.
-  - Notifies buyers and sellers during the agreement signing process.
-  - Notifies user about their field conditions
     
 - <strong>IoT Hardware Integration(Esp32 & Bolt-Iot):</strong>
 
@@ -172,7 +161,6 @@ By empowering farmers with tools to monitor, manage, and monetize their agricult
 - <strong>OpenWeatherMap API:</strong>
   
   - Provides real-time weather updates integrated into the field overview dashboard.
-  - Helps users make informed decisions based on local weather conditions of the farmers location.
 
 
 ### Solution Architecture <a name="solution-architecture"></a>
