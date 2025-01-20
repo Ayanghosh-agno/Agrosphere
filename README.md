@@ -16,15 +16,7 @@
     - [Solution Architecture](#solution-architecture)
 
 -  [Detailed Description](#detail-materials)
-    -  [Agrosphere Hardware](#agrosphere-transmitter)
-    -  [Agrosphere Website](#agrosphere-website)
-        - [Home Page](#home-page)
-        - [Farm Overview Page](#farm-overview-page)
-        - [MarketPlace Page](#market-place-page)
-        - [Post an Add Page](#Post-an-add-page)
-        - [My Purchase Page](#my-purchase-page)
-        - [Contact Us/Case track Page](#contact-us-page)
-        - [Registation Page](#registration-page)
+    -  [What does AGROSPHERE do](#agrosphere-transmitter)
 
 - [Presentation materials](#presentation-materials)
     - [Solution Demo Video](#solution-demo-video)
@@ -166,3 +158,74 @@ By empowering farmers with tools to monitor, manage, and monetize their agricult
 ### Solution Architecture <a name="solution-architecture"></a>
 
 ![Solution Architecture](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/Agrosphere%20Readme%20Images/Agrosphere%20architecture.png)
+
+
+<h2 align="center"> Detailed description ? <a name="detailed-description"></a> </h2>
+
+### What does AGROSPHERE do ? 
+
+Agrosphere is an integrated platform designed to transform modern farming by combining real-time environmental monitoring, AI-driven insights, and a connected marketplace to empower farmers with the tools and knowledge they need to improve productivity, sustainability, and profitability. By leveraging IoT sensors, artificial intelligence, and cloud-based solutions, Agrosphere addresses key challenges faced by farmers and provides comprehensive solutions to optimize farm management. Here’s an overview of what Agrosphere does, broken down into its core functions:
+
+1. Real-Time Environmental Monitoring
+   -    Agrosphere employs IoT-based hardware devices that are installed on farms to capture a wide range of environmental and soil conditions. These devices measure crucial parameters such as:
+         - Soil moisture
+         - Soil temperature
+         - Soil pH
+         - Soil nutrients (Nitrogen, Phosphorus, Potassium, etc.)
+         - Atmospheric temperature
+         - Humidity
+         - Light Lux
+
+    -    The data collected by these sensors is transmitted to the platform, where it is stored and analyzed in real-time. This allows farmers to access live updates on their farm's conditions, making it easier to track performance, identify issues early, and take preventive actions.
+
+2. AI-Driven Insights
+   
+    -    Agrosphere uses WatsonX AI to analyze the sensor data and provide personalized recommendations for farmers. The platform offers insights such as:
+
+          -    Irrigation recommendations: Based on soil moisture levels and weather data, AI suggests optimal irrigation schedules to ensure crops receive the right amount of water at the right time.
+          -    Farming best practices: AI analyzes the data to provide actionable recommendations on crop rotation, fertilization, pest control, and planting strategies.
+          -    Weather predictions: Agrosphere also provides localized weather updates to help farmers anticipate any changes in the environment and adjust their operations accordingly.
+
+    -    These AI-powered insights not only help farmers optimize their daily operations but also enable them to make data-driven decisions that maximize crop yield, reduce costs, and improve sustainability.
+
+4. Control of Farm Equipment
+   
+    -    Agrosphere gives farmers the ability to control essential farm equipment remotely, including pumps, lights, and other machinery. The platform tracks when each device was last turned on and how long it was used, offering an overview of energy consumption and performance. This remote control feature is especially useful for automating irrigation systems, lighting for crop protection, or controlling machinery for field operations. The goal is to provide farmers with better control over their farm's operations, making it more efficient and cost-effective.
+
+5. Marketplace for Agricultural Products
+   
+    -    Agrosphere hosts a marketplace where farmers and businesses can buy, sell, and lease agricultural products and equipment. This feature includes:
+          
+          - Product Listings: Farmers can list items like seeds, fertilizers, tools, and even agricultural land. They can also offer farm equipment like pumps and lights for lease or sale.
+          - Product Categories: The marketplace allows users to filter products by category, price, or type of product, making it easier to find what they need.
+          - Smart Contracts & Agreements: Agrosphere integrates with DocuSign to streamline the buying and leasing process. When a user decides to purchase an item, they are prompted to sign a DocuSign agreement for a secure transaction. The system ensures that both parties (buyer and seller) fulfill their obligations before the deal is completed.
+          - Tracking: After a product is purchased or leased, the buyer can track their order and receive updates regarding the shipment or product approval.
+
+5. Case Management & Communication
+
+    -    For users who encounter issues or have inquiries related to products, Agrosphere provides a Case Management System. This allows users to raise a case for any concerns they might have about their orders, equipment, or other farm-related challenges.
+          -    Case Tracking: After submitting a case, users can track its status, get updates on progress, and communicate with the support agents via a built-in messaging system.
+          -    OTP Verification: To ensure privacy and security, unauthenticated users must verify their identity via an OTP sent to their registered email address before they can interact with their cases.
+          -    Case Resolution: Support agents can interact with the users to resolve issues and update the case status. Users will also receive notifications (via email and SMS) about the case progress and resolution.
+
+6. User Registration and Authentication
+   
+    -    Agrosphere supports a seamless user registration process, where users can sign up for the platform by providing their email and other details. After filling out a registration form, users are asked to sign an agreement via DocuSign, confirming their acceptance of terms and conditions. Upon successful registration and agreement signing, users receive:
+
+    -    Confirmation email to reset their password.
+    -    Access to the platform, where they can view real-time updates, interact with the marketplace, control their farm equipment, and receive AI insights.
+7. Salesforce Integration
+    -    To enhance its operational capabilities, Agrosphere integrates with Salesforce in two key areas:
+          -    Salesforce Experience Cloud: This is used for providing an interactive and user-friendly interface for farmers. It allows farmers to view and manage their accounts, track cases, and access key insights into their farm operations. It also powers the marketplace where users can buy and lease equipment.
+          -    Salesforce Service Cloud: This is used for managing internal operations. Here, cases are logged, tracked, and resolved by agents. Additionally, sensor data from the farm equipment is stored in custom objects within Salesforce, and automated processes like scheduled reports and voiding agreements are handled via Scheduled Apex classes.
+
+8. Notifications and Alerts
+
+    -    Agrosphere provides notifications to keep users informed about critical activities on their farm:
+          -    Sensor Alerts: Users receive alerts when sensor readings go beyond set thresholds (e.g., soil moisture too low, temperature too high).
+          -    Equipment Alerts: If equipment malfunctions or requires attention, users are notified.
+          -    Case Updates: Users receive email and SMS updates about their case statuses, including when they are submitted, processed, or closed.
+
+Conclusion
+
+Agrosphere is a comprehensive platform that integrates hardware, AI-driven insights, and an online marketplace to empower farmers with better control, actionable data, and smarter tools for farm management. By combining modern technology with user-friendly interfaces and deep insights, Agrosphere is helping farmers across the world optimize their operations, increase productivity, and contribute to more sustainable agricultural practices.
