@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
 <h1 align="center"<a name="title"></a>AGROSPHERE</h1>
 <div align="center">
 
@@ -308,3 +310,31 @@ AgroSphere keeps users informed with timely notifications:
   Implement AI-powered market analytics to help farmers make informed decisions about pricing and selling their crops.
 
 ---
+
+<h2 align="center"> Presentation materials <a name="presentation-materials"></a> </h2>
+
+### Solution Demo Video <a name="solution-demo-video"></a>
+
+[![Solution Demo Video](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/Agrosphere%20Readme%20Images/Agrosphere-Thumbnail.png)]()
+
+---
+
+### Live Demo <a name="Live-Demo"></a>
+
+We can see live working of Agrosphere Website - [AGROSPHERE](https://agno-dev-ed.develop.my.site.com/agrospehre/s/)
+
+<h2 align="center"> About <a name="about"></a> </h2>
+
+---
+
+### Author<a name="Authors"></a>
+
+<img src="https://github.com/Ayanghosh-agno/Agrosphere/blob/main/Agrosphere%20Readme%20Images/Ayan%20Ghosh.png" style="max-width: 70px;">
+
+   **Ayan Ghosh**
+
+
+---
+
+### License<a name="license"></a>
+This project is licensed under the Apache 2 License - see the [LICENSE](LICENSE) file for details.
