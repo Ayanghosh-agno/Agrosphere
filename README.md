@@ -323,9 +323,8 @@ AgroSphere keeps users informed with timely notifications:
 
 We can see live working of Agrosphere Website - [AGROSPHERE](https://agno-dev-ed.develop.my.site.com/agrospehre/s/)
 
-<h2 align="center"> About <a name="about"></a> </h2>
 
----
+<h2 align="center"> About <a name="about"></a> </h2>
 
 ### Author<a name="Authors"></a>
 
