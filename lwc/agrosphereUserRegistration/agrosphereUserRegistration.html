@@ -1,0 +1,85 @@
+<template>
+    <div class="registration-container">
+        <div class="form-header">
+            <h1>Welcome to AgroSphere</h1>
+            <p>Register now and unlock the full potential of sustainable farming!</p>
+        </div>
+        <template if:true={hasError}>
+            <div class="error-message">
+                <p>{errorMessage}</p>
+            </div>
+        </template>
+        <template if:true={allLicenseUsed}>
+            <div class="error-message" style="text-align: left; font-family: Arial, sans-serif; margin: 20px;">
+                <p style="font-size: 16px;"><strong>Thank You for Your Interest in AgroSphere!</strong></p>
+                <p style="font-size: 16px;">
+                    Unfortunately, our free Salesforce org has reached its limit for creating new users due to license
+                    restrictions.
+                </p>
+                <p style="font-size: 16px;">
+                    If you'd like to try and experience AgroSphere, please email me at
+                    <strong><a href="mailto:ayanghosh974@gmail.com"> ayanghosh974@gmail.com</a></strong>,
+                    and I'll be happy to assist you.
+                </p>
+                <p style="font-size: 16px">Apologies for the inconvenience, and thank you for your
+                    understanding.</p>
+                <p style="font-size: 16px; font-weight: bold;">- Ayan Ghosh</p>
+            </div>
+        </template>
+
+        <form class="registration-form">
+            <!-- Spinner -->
+            <template if:true={isProcessing}>
+                <template if:false={successMessage}>
+                    <div class="spinner-overlay">
+                        <div class="spinner"></div>
+                        <p>Processing your request. Please wait...</p>
+                    </div>
+                </template>
+            </template>
+
+            <div class="form-item" if:false={hideForm}>
+                <label for="email">Email Address</label>
+                <div class="input-group">
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onchange={handleEmailChange}
+                        required
+                    />
+                    <span class="icon">@</span>
+                </div>
+            </div>
+            <div class="form-actions" if:false={hideForm}>
+                <button type="button" if:false={allLicenseUsed} class="submit-button" onclick={handleSubmit}>
+                    Validate & Register
+                </button>
+            </div>
+        </form>
+
+        <!-- Message when window is closed -->
+        <template if:true={showClosedMessage}>
+            <div class="closed-message">
+                <p>The window was closed without verifying. Do you want to open it again?</p>
+                <button class="action-button" onclick={handleReopen}>Reopen</button>
+            </div>
+        </template>
+
+
+        <template if:true={successMessage}>
+            <div class="success-message">
+                <p>{successMessage}</p>
+                <p>Please Check the email account associated with your user name for instructions on resetting your
+                    password. </p>
+                <p> Remember to look in your spam folder, where automated messages sometimes filter.</p>
+                <p> If you still can't log in, contact your administrator.</p>
+            </div>
+        </template>
+        <div class="login-link">
+            <p>Already have an account? <a href="https://agno-dev-ed.develop.my.site.com/agrospehre/s/login"
+                    class="login-anchor">Log in here</a>.</p>
+        </div>
+    </div>
+</template>

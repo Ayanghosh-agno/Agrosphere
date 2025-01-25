@@ -1,0 +1,36 @@
+<template>
+    <div class="chat-container">
+        <!-- Chat Header -->
+        <div class="header">
+            <h2>💬 Case Communication</h2>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="messages-container"> 
+            <template if:true={messages.length}>
+                <template for:each={messages} for:item="message">
+                    <div key={message.Id} class={message.className}>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender">{message.displayName}</span>
+                                <span class="timestamp">{message.createdDate}</span>
+                            </div>
+                            <p class="message-text">{message.message}</p>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template if:false={messages.length}>
+                <p class="no-messages">No messages yet. Start the conversation now!</p>
+            </template>
+        </div>
+
+        <!-- Message Input Area -->
+        <div class="message-input">
+            <textarea class="message-box" placeholder="Type your message..." oninput={handleMessageChange}></textarea>
+            <button class="send-button" onclick={sendMessage}>
+                Send Message
+            </button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,16 @@
+<template>
+    <div class="water-pump-control">
+        <h2>{applianceName} Control</h2>
+        <div class="control-section">
+            <button onclick={togglePump} class={buttonClass}>
+                {pumpButtonLabel}
+            </button>
+        </div>
+        <div class="usage-section">
+            <p>{applianceName} Status: {pumpStatusText}</p>
+            <p>Time {applianceName} Has Been On: {timePumpOn}</p>
+            <p>Last Activation Time: {lastActivationTime}</p>
+            <p>Last Runtime: {lastRuntime}</p>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,11 @@
+<template>
+    <div class="timer-container">
+        <h2>Agreement will expire in:</h2>
+        <template if:true={isExpired}>
+            <p class="expired-message">The agreement will expire anytime soon!</p>
+        </template>
+        <template if:false={isExpired}>
+            <p>Time remaining: {remainingTime.hours}h {remainingTime.minutes}m {remainingTime.seconds}s</p>
+        </template>
+    </div>
+</template>

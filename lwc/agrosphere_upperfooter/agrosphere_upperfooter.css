@@ -1,0 +1,65 @@
+/* CTA Section Styling */
+.cta-section {
+    background-color: #f1f1f1;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cta-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.cta-description {
+    font-size: 1rem;
+    color: #555555;
+    margin-bottom: 30px;
+}
+
+.cta-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-input {
+    padding: 10px;
+    width: 250px;
+    font-size: 1rem;
+    border: 2px solid #007b55;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    background-color: #007b55;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #004d34;
+}
+
+/* Footer End Section Styling */
+.footer-end {
+    text-align: center;
+    background-color: #333333;
+    color: white;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}

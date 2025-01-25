@@ -1,0 +1,37 @@
+<template>
+    <div lwc:if={spinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="large"></lightning-spinner>
+        </div>
+    <div class="container">
+        <div class="message">
+            <img src="https://agno-dev-ed.develop.my.site.com/agrospehre/resource/1736275627000/AgrosphereLogo" alt="Agrosphere Logo" class="logo" />
+            <h1>No Device Found</h1>
+            <p>
+                It seems you don’t have a device linked to your account. Please enter your 
+                <strong>Agrosphere Device ID</strong> to connect your device and start tracking your field data.
+            </p>
+        </div>
+
+        <!-- Device ID Input Form -->
+        <form class="device-form" onsubmit={handleSubmit}>
+            <div class="form-item">
+                <label for="deviceId">Device ID</label>
+                <input
+                    id="deviceId"
+                    type="text"
+                    name="deviceId"
+                    placeholder="Enter your Device ID"
+                    value={deviceId}
+                    oninput={handleInputChange}
+                    required
+                />
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-buttons">
+                <button if:false={spinner} type="submit" class="submit-button" onclick={handleSubmit}>Submit</button>
+                <!-- <button type="button" class="cancel-button" onclick={handleCancel}>Cancel</button> -->
+            </div>
+        </form>
+    </div>
+</template>

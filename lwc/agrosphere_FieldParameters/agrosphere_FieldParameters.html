@@ -1,0 +1,143 @@
+<template>
+    <!-- Right Side: Buttons for SMS and Email -->
+    <div lwc:if={isLoading}>
+        <lightning-spinner style="position:fixed" alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+    <c-cometdlwc ondatareceived={latestDataHandler}></c-cometdlwc>
+    <div class="field-condition-overview">
+
+        <div class="section-header">
+            <h1>Field Condition Overview - {selectedData}</h1>
+        </div>
+
+        <div class="dropdown-section">
+            <label class="dropdown-label">Select Data View:</label>
+            <select class="data-dropdown" onchange={handleDataSelection}>
+                <option value="latest">Live Data</option>
+                <option value="30days">Average of 30 Days</option>
+            </select>
+        </div>
+        <!-- Field Condition Card -->
+        <div class="field-condition-card">
+            <!-- Atmospheric Conditions -->
+            <div class="condition-section">
+                <h3>Atmospheric Conditions</h3>
+                <div class="column-data">
+                    <div class="condition-item">
+                        <img src={parameterDataImg.AtmosphereTemperature} class="condition-icon" alt="Temp Icon" />
+                        <span class="condition-name">Temp </span>
+                        <span class="condition-value">{getSensorValues.AtmosphereTemperature} °C</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.AtmosphereHumidity} class="condition-icon" alt="Humidity Icon" />
+                        <span class="condition-name">Humidity </span>
+                        <span class="condition-value"> {getSensorValues.AtmosphereHumidity} %</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.RainPercentage} class="condition-icon" alt="Rain Icon" />
+                        <span class="condition-name">Rain </span>
+                        <span class="condition-value"> {getSensorValues.RainPercentage} %</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.LightIntensity} class="condition-icon" alt="Rain Icon" />
+                        <span class="condition-name">Light </span>
+                        <span class="condition-value"> {getSensorValues.LightIntensity} LUX</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Soil Conditions -->
+            <div class="condition-section">
+                <h3>Soil Conditions</h3>
+                <div class="column-data">
+                    <div class="condition-item">
+                        <img src={parameterDataImg.SoilElectricConductivity} class="condition-icon" alt="EC Icon" />
+                        <span class="condition-name">EC</span>
+                        <span class="condition-value">{getSensorValues.SoilElectricConductivity} u/cm</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.SoilMoisture} class="condition-icon" alt="Moisture Icon" />
+                        <span class="condition-name">Moisture</span>
+                        <span class="condition-value">{getSensorValues.SoilMoisture} %</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.SoilNitrogen} class="condition-icon" alt="Nitrogen Icon" />
+                        <span class="condition-name">Nitrogen</span>
+                        <span class="condition-value">{getSensorValues.SoilNitrogen}  mg/Kg</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.SoilPhosphorus} class="condition-icon" alt="EC Icon" />
+                        <span class="condition-name">Soil Phosphorus</span>
+                        <span class="condition-value">{getSensorValues.SoilPhosphorus}  mg/Kg</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.SoilTemperature} class="condition-icon" alt="Moisture Icon" />
+                        <span class="condition-name">Soil Temperature</span>
+                        <span class="condition-value">{getSensorValues.SoilTemperature} °C</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.SoilPotassium} class="condition-icon" alt="Nitrogen Icon" />
+                        <span class="condition-name">Soil Potassium</span>
+                        <span class="condition-value">{getSensorValues.SoilPotassium}  mg/Kg</span>
+                    </div>
+                    <div class="condition-item">
+                        <img src={parameterDataImg.SoilPh} class="condition-icon" alt="Nitrogen Icon" />
+                        <span class="condition-name">Soil Ph</span>
+                        <span class="condition-value">{getSensorValues.SoilPh}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transmitter Battery -->
+            <div class="condition-section">
+                <h3>Transmitter Battery</h3>
+                <div class="condition-item">
+                    <img src={parameterDataImg.TransmitterBattery} class="condition-icon" alt="Battery Icon" />
+                    <span class="condition-name">Battery</span>
+                    <span class="condition-value">{getSensorValues.TransmitterBattery} %</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn send-sms" onclick={handleNotificationSendSMS}>Send me this update in SMS</button>
+            <button class="btn send-email" onclick={handleNotificationSendEmail}>Send me this update in Email</button>
+        </div>
+
+
+    </div>
+    <template lwc:if={modalActive}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick={closeModal}>
+                                                                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" name="close" onclick={closeModal} ></lightning-icon>
+                                                                                <span class="slds-assistive-text">Close</span>
+                                                                            </button>
+                    <h2 class="slds-text-heading_medium slds-hyphenate">{modalHeader}</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <div lwc:if={emailField}>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="E.g - someone@abc.com" name="email" oninput={handleInputChange} required>
+                        <div class="error-message" if:true={errors.email}>{errors.email}</div>
+                    </div>
+                    <div lwc:if={phoneField}>
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" placeholder="E.g - +978888888888" name="phone" oninput={handleInputChange} required>
+                        <div class="error-message" if:true={errors.phone}>{errors.phone}</div>
+                    </div>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="brand" label="Submit" title="Submit" onclick={submitModal}
+                        class="slds-m-left_small" disabled={disable_submitbtn}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -1,0 +1,251 @@
+/* General Styles */
+.page-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #2a9d8f, #264653);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.help-btn {
+    margin-top: 15px;
+    padding: 10px 25px;
+    background-color: #e63946;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #d62839;
+}
+
+/* Statistics Section */
+.statistics-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    flex: 1;
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h3 {
+    font-size: 1.5rem;
+    color: #264653;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 1.8rem;
+    color: #2a9d8f;
+    font-weight: bold;
+}
+
+/* Filter Section */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.filter-dropdown {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.filter-dropdown:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Purchase List */
+.purchase-list {
+    margin-top: 20px;
+}
+
+.purchase-card {
+    background: white;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.purchase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-size: 1.8rem;
+    color: #264653;
+    font-weight: bold;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: #e63946;
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 1rem;
+    color: #555;
+}
+
+.agreement-status {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status-complete {
+    color: #2a9d8f;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.status-pending {
+    color: #e76f51;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.view-btn {
+    background-color: #2a9d8f;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #21867a;
+}
+
+.sign-btn {
+    background-color: #f4a261;
+    color: white;
+}
+
+.sign-btn:hover {
+    background-color: #e76f51;
+}
+
+/* No Records Message */
+.no-records {
+    text-align: center;
+    color: #999;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+/* Footer Section */
+.page-footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.page-footer a {
+    color: #2a9d8f;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.page-footer a:hover {
+    text-decoration: underline;
+}
+
+.spins::after {
+    position: absolute;
+    content: attr(data-text);
+    width: 100%;
+    text-align: center;
+    top: calc(50% + 3em);
+    font-weight: bold;
+    color:grey
+}

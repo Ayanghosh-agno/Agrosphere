@@ -1,0 +1,37 @@
+<template>
+    <div class="process-container">
+        <h2>Ad Posting Process</h2>
+        <p>Follow the steps and stay updated on your ad status.</p>
+
+        <div class="steps">
+            <!-- Step 1: Submit Product -->
+            <div class={stepOneClass}>
+                <lightning-icon icon-name="utility:add" size="medium" alternative-text="Submit Product"></lightning-icon>
+                <h3>Submit Product</h3>
+                <p>Submit your product details for listing.</p>
+            </div>
+
+            <!-- Step 2: Verification -->
+            <div class={stepTwoClass}>
+                <lightning-icon icon-name="utility:check" size="medium" alternative-text="Verification"></lightning-icon>
+                <h3>Verification by Experts</h3>
+                <p>Your product will be reviewed by Agrosphere experts.</p>
+            </div>
+
+            <!-- Step 3: Hosting -->
+            <div class={stepThreeClass}>
+                <lightning-icon icon-name="utility:approval" size="medium" alternative-text="Hosting"></lightning-icon>
+                <h3>Hosting in Agrosphere</h3>
+                <p>Your product is listed on the Agrosphere marketplace.</p>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress" style={progressStyle}></div>
+        </div>
+
+        <!-- Button to move through steps -->
+        <!-- <lightning-button label="Next Step" onclick={nextStep} class="next-button"></lightning-button> -->
+    </div>
+</template>

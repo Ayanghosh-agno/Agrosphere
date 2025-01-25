@@ -1,0 +1,88 @@
+<template>
+    <div class="contact-us-container">
+        <div class="form-header">
+            <h1>Contact Us</h1>
+            <p>We are here to help! Fill out the form and our team will get back to you shortly.</p>
+        </div>
+        <div lwc:if={spinner} style="position:relative;height:400px">
+            <lightning-spinner class="spins" data-text={spinnertext} alternative-text="Loading" variant="brand"
+                size="large"></lightning-spinner>
+        </div>
+
+        <template if:true={isSubmitted}>
+            <div class="success-message">
+                <p>Thank you for reaching out!</p>
+                <p>Your issue has been submitted successfully.</p>
+                <p>
+                    Your Reference Number is:<strong> {caseNumber}</strong>
+                </p>
+            </div>
+            <div class="form-buttons" style="margin:25px">
+                    <button class="submit-button" onclick={handleBackButton}>Back to From</button>
+                </div>
+        </template>
+
+        <template if:false={isSubmitted}>
+            <form if:false={spinner} class="contact-form" onsubmit={handleSubmit}>
+                <template if:false={isAuthenticated}>
+                    <div class="form-item">
+                        <label for="firstName">First Name</label>
+                        <input
+                            id="firstName"
+                            type="text"
+                            name="firstName"
+                            placeholder="Enter your first name"
+                            value={firstName}
+                            oninput={handleInputChange}
+                            required
+                        />
+                        <span if:true={errors.firstName} class="error">{errors.firstName}</span>
+                    </div>
+                    <div class="form-item">
+                        <label for="lastName">Last Name</label>
+                        <input
+                            id="lastName"
+                            type="text"
+                            name="lastName"
+                            placeholder="Enter your last name"
+                            value={lastName}
+                            oninput={handleInputChange}
+                            required
+                        />
+                        <span if:true={errors.lastName} class="error">{errors.lastName}</span>
+                    </div>
+                    <div class="form-item">
+                        <label for="email">Email</label>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            oninput={handleInputChange}
+                            required
+                        />
+                        <span if:true={errors.email} class="error">{errors.email}</span>
+                    </div>
+                </template>
+
+                <div class="form-item">
+                    <label for="issueDescription">Issue Description</label>
+                    <textarea
+                        id="issueDescription"
+                        name="issueDescription"
+                        placeholder="Describe your issue"
+                        value={issueDescription}
+                        oninput={handleInputChange}
+                        required
+                    ></textarea>
+                    <span if:true={errors.issueDescription} class="error">{errors.issueDescription}</span>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="submit-button" onclick={handleSubmit}>Submit</button>
+                </div>
+            </form>
+        </template>
+    </div>
+</template>

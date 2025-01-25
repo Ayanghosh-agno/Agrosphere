@@ -1,0 +1,61 @@
+<template>
+    <header class="agrosphere-header">
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="https://agno-dev-ed.develop.my.site.com/agrospehre/resource/1736275627000/AgrosphereLogo" alt="AgroSphere Logo" class="logo" />
+            <h1> AGROSPHERE </h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="navigation">
+            <ul class="nav-list">
+                <li data-page="home"><a data-page="home" href="/agrospehre/s/" class="nav-link">Home</a></li>
+                <li data-page="farm-overviews" lwc:if={isLoggedIn}><a data-page="farm-overviews" href="/agrospehre/s/farm-overview" class="nav-link">Farm dashboard</a></li>
+                <li data-page="my-purchases" lwc:if={isLoggedIn}><a data-page="my-purchases" href="/agrospehre/s/my-purchases" class="nav-link">My purchases</a></li>
+                <li data-page="marketplace"><a data-page="marketplace" href="/agrospehre/s/marketplace" class="nav-link">Marketplace</a></li>
+                <li data-page="post-an-add"><a data-page="post-an-add" href="/agrospehre/s/post-an-add" class="nav-link">Post an Add</a></li>
+                <li data-page="contact-us"><a data-page="contact-us" href="/agrospehre/s/contact-us" class="nav-link">Contact us</a></li>
+            </ul>
+        </nav>
+        <!-- User Actions: Sign In/Sign Up for non-logged-in users -->
+            <div class="user-actions" if:false={isLoggedIn}>
+                <button class="action-btn sign-in-btn" onclick={openSignIn}>Sign In</button>
+                <button class="action-btn sign-up-btn" onclick={openSignUp}>Sign Up</button>
+            </div>
+            <div class="user-actions" if:true={isLoggedIn}>
+                <button class="action-btn sign-in-btn" onclick={logout}>Log Out</button>
+            </div>
+
+        <!-- Hamburger Icon (for mobile) -->
+        <div class="hamburger-menu" if:true={toggleCross} onclick={toggleMenu}>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="hamburger-menu" if:false={toggleCross} onclick={toggleMenu}>X</div>
+
+        <!-- Mobile Navigation -->
+        <nav style={menuClass} class="mobile-nav" aria-hidden="true">
+            <ul class="mobile-nav-list">
+                <li><a href="/agrospehre/s/" class="mobile-nav-link">Home</a></li>
+                <li lwc:if={isLoggedIn}><a href="/agrospehre/s/farm-overview" class="mobile-nav-link">Farm dashboard</a></li>
+                <li lwc:if={isLoggedIn}><a href="/agrospehre/s/my-purchases" class="mobile-nav-link">My purchases</a></li>
+                <li><a href="/agrospehre/s/marketplace" class="mobile-nav-link">Marketplace</a></li>
+                <li><a href="/agrospehre/s/post-an-add" class="nav-link">Post an Add</a></li>
+                
+                <li><a href="/agrospehre/s/contact-us" class="mobile-nav-link">Contact</a></li>
+
+                <!-- Mobile menu options for logged-in users -->
+                <template if:true={isLoggedIn}>
+                    <li><a href="javascript:void(0);" class="mobile-nav-link" onclick={logout}>Logout</a></li>
+                </template>
+
+                <!-- Mobile menu options for non-logged-in users -->
+                <template if:false={isLoggedIn}>
+                    <li><a href="javascript:void(0);" class="mobile-nav-link" onclick={openSignIn}>Sign In</a></li>
+                    <li><a href="javascript:void(0);" class="mobile-nav-link" onclick={openSignUp}>Sign Up</a></li>
+                </template>
+            </ul>
+        </nav>
+    </header>
+</template>

@@ -1,0 +1,53 @@
+<template>
+    <div class="container" if:false={caseDetails}>
+        <div class="header">
+            <h2>Track Your Case</h2>
+        </div>
+        <div lwc:if={spinner} style="position:relative;height:300px">
+            <lightning-spinner class="spins" data-text={spinnertext} alternative-text="Loading" variant="brand"
+                size="large"></lightning-spinner>
+        </div>
+        <!-- Step 1: Case Number Input -->
+        <template if:true={showCaseInput}>
+            <div class="input-container">
+                <input
+                    type="text"
+                    class="case-input"
+                    placeholder="Enter your Case Number"
+                    value={caseNumber}
+                    oninput={handleCaseInput}
+                />
+                <button class="track-case-button" onclick={trackCase}>
+                    Track Case
+                </button>
+            </div>
+        </template>
+
+        <!-- Step 2: OTP Verification -->
+        <template if:true={showOTPInput}>
+            <div class="otp-container">
+                <p>We've sent an OTP to the email associated with this case.</p>
+                <input
+                    type="text"
+                    class="otp-input"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    oninput={handleOTPInput}
+                />
+                <button class="verify-otp-button" onclick={verifyOTP}>
+                    Verify OTP
+                </button>
+            </div>
+        </template>
+
+        <!-- No Results -->
+        <template if:true={noResults}>
+            <div class="no-results">
+                <p>No case found with the provided number.</p>
+            </div>
+        </template>
+    </div>
+    <template if:true={caseDetails}>
+        <c-agrosphere-case-chat-window record-id={caseId}> </c-agrosphere-case-chat-window>
+    </template>
+</template>

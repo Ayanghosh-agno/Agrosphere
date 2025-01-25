@@ -1,0 +1,121 @@
+<template>
+    <div class="page-container">
+
+        <div lwc:if={spinner}>
+            <lightning-spinner class="spins" data-text={spinnertext} alternative-text="Loading" variant="brand" size="large"></lightning-spinner>
+        </div>
+
+        <!-- Header Section -->
+        <header class="page-header">
+            <h1 class="page-title">My Purchases</h1>
+            <p class="page-subtitle">Manage your purchase agreements and track their progress.</p>
+            <button class="btn help-btn" onclick={handleContactSupport}>Contact Support</button>
+        </header>
+
+        <!-- Statistics Section -->
+        <div class="statistics-section">
+            <div class="stat-card">
+                <h3>Total Purchases</h3>
+                <p>{totalPurchases}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Agreements Completed</h3>
+                <p>{completedAgreements}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Agreements</h3>
+                <p>{pendingAgreements}</p>
+            </div>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="filter-section">
+            <input type="text" placeholder="Search purchases..." class="search-bar" oninput={handleSearch} />
+            <select class="filter-dropdown" onchange={handleFilterChange}>
+                <option value="">All Statuses</option>
+                <option value="completed">Agreements Completed</option>
+                <option value="pendingFarmer">Pending with Farmer</option>
+                <option value="pendingBuyer">Pending with me</option>
+            </select>
+            <lightning-button-icon icon-name="utility:refresh" size="medium" alternative-text="Refresh"
+                class="slds-m-left_xx-small" onclick={refreshdata}></lightning-button-icon>
+        </div>
+
+        <!-- Purchase List -->
+        <div class="purchase-list">
+            <template if:true={filteredPurchases}>
+                <template for:each={filteredPurchases} for:item="purchase">
+                    <div key={purchase.id} class="purchase-card">
+                        <div class="card-header">
+                            <h2 class="product-name">{purchase.productName}</h2>
+                            <p class="product-price">₹{purchase.price}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="agreement-status">
+                                <template if:true={purchase.isAgreementComplete}>
+                                    <span class="status-complete">Agreement Completed</span>
+                                    <button class="btn view-btn" data-id={purchase.id} onclick={handleViewDocument}>
+                                        View Signed Document
+                                    </button>
+                                </template>
+                                <template if:true={purchase.isPendingWithFarmer}>
+                                    <span class="status-pending">Pending with Farmer</span>
+                                </template>
+                                <template if:true={purchase.isPendingWithBuyer}>
+                                    <c-agrosphere-countdown created-date={purchase.createdDate}></c-agrosphere-countdown>
+                                    <span class="status-pending">Pending with You</span>
+                                    <button class="btn sign-btn" data-id={purchase.id} onclick={handleSignNow}>
+                                        Sign Now
+                                    </button>
+                                </template>
+                            </p>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template if:false={filteredPurchases}>
+                <p class="no-records">No purchases to display.</p>
+            </template>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>&copy; 2025 AgriMarket. All rights reserved.</p>
+            <a href="/agrospehre/s/marketplace">Back to Marketplace</a>
+        </footer>
+    </div>
+    <template if:true={showModal}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+            onclick={closeModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+            </lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{modalHeader}</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+
+                    <div lwc:if={spinner}>
+                        <lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+                    </div>
+                    <div lwc:else>
+                        <iframe height="900px" width="100%" src={docLink}></iframe>
+                    </div>
+                </div>
+                <!-- modal footer start-->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
+                </footer>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

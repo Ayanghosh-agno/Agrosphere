@@ -1,0 +1,171 @@
+<template>
+    <template lwc:if={error}>
+        <div class="weather-overview">
+            <div class="weather-header">
+                <img src={errorIcon} class="slds-align_absolute-center" alt="weather-icon" width="200px" />
+            </div>
+            <h3 class="slds-align_absolute-center" style="font-size:24px">{error}</h3>
+        </div>
+    </template>
+    <template lwc:else>
+        <div class="weather-overview">
+            <div class="weather-header">
+                <h1>Weather Overview</h1>
+                <p class="location">Farm Location: <span class="location-name">{cityName}</span></p>
+            </div>
+            <!-- Weather Details Card -->
+            <div class="weather-card">
+                <div class="weather-info">
+                    <template lwc:if={cityName}>
+                        <div class="temp">
+                            <img src={weatherIcon} alt="weather-icon" width="120px" />
+                            <span class="temp-value">{temp}°C </span>
+                            <span class="weather-description">{weatherDescription}</span>
+                        </div>
+                        <div class="date-time">{dayName}, {currentTime}</div>
+                        <div class="slds-align_absolute-center">
+                            <img src={cloudy} alt="weather-icon" width="60px" class="secondary-indicator-icon"/>
+                            <p class="slds-m-right_left"> Cloudy - {cloudPercentage}%</p>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <div slot="primary-metric" class="demo-only" style="height: 66.5px; position: relative">
+                            <div class="slds-spinner_container">
+                                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                    <span class="slds-assistive-text">Loading</span>
+                                    <div class="slds-spinner__dot-a"></div>
+                                    <div class="slds-spinner__dot-b"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Weather Stats Section -->
+                <div class="weather-stats">
+                    <div class="stat-item">
+                        <template lwc:if={humidity}>
+                            <span class="stat-name">Humidity </span>
+                            <span class="stat-value">{humidity}%</span>
+
+                        </template>
+                        <template lwc:else>
+                            <div slot="primary-metric" class="demo-only" style="height: 66.5px; position: relative">
+                                <div class="slds-spinner_container">
+                                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="stat-item">
+                        <template lwc:if={windSpeed}>
+                            <span class="stat-name">Wind Speed </span>
+                            <span class="stat-value">{windSpeed}</span>
+                        </template>
+                        <template lwc:else>
+
+                            <div slot="primary-metric" class="demo-only" style="height: 66.5px; position: relative">
+                                <div class="slds-spinner_container">
+                                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </template>
+                    </div>
+                    <div class="stat-item">
+                        <template lwc:if={windSpeed}>
+                            <span class="stat-name">UV Index </span>
+                            <span class="stat-value">{uvIndex}</span>
+                        </template>
+                        <template lwc:else>
+
+
+                            <div slot="primary-metric" class="demo-only" style="height: 66.5px; position: relative">
+                                <div class="slds-spinner_container">
+                                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="stat-item">
+                        <template lwc:if={visibility}>
+
+                            <span class="stat-name">Visibility </span>
+                            <span class="stat-value">{visibility} km</span>
+                        </template>
+                        <template lwc:else>
+                            <div slot="primary-metric" class="demo-only" style="height: 66.5px; position: relative">
+                                <div class="slds-spinner_container">
+                                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Sunrise/Sunset Info -->
+                <div class="sunset-info">
+
+                    <div class="slds-clearfix slds-align_absolute-center">
+                        <template lwc:if={visibility}>
+                            <img src={sunriseIcon} alt="Sun Rise" width="60px"/>
+                            <div class="slds-m-left_small">
+                                <p><strong>Sunrise:</strong> {sunrise}</p>
+                            </div>
+                        </template>
+                        <template lwc:else>
+
+                            <div slot="primary-metric" class="demo-only" style="height: 66.5px; position: relative">
+                                <div class="slds-spinner_container">
+                                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="slds-clearfix slds-align_absolute-center">
+                        <template lwc:if={visibility}>
+                            <img src={sunsetIcon} alt="Sun Rise" width="60px"/>
+                            <div class="slds-m-left_small">
+                                <p><strong>Sunset:</strong> {sunset}</p>
+                            </div>
+                        </template>
+                        <template lwc:else>
+                            <div slot="primary-metric" class="demo-only" style="height: 66.5px; position: relative">
+                                <div class="slds-spinner_container">
+                                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+</template>

@@ -1,0 +1,27 @@
+.message {
+    text-align: center;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+}
+
+.error {
+    text-align: center;
+    margin-top: 50px;
+    color: red;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 3rem;
+    color: #4caf50;
+}

@@ -1,0 +1,15 @@
+<template>
+    <template if:true={isValidPage}>
+        <div class="message">
+            <h1>Thanks for choosing Agrosphere.</h1>
+            <p>Please wait while we are redirecting you.</p>
+            <h2>{countdown}</h2>
+        </div>
+    </template>
+
+    <template if:false={isValidPage}>
+        <div class="error">
+            <h1>{errorMessage}</h1>
+        </div>
+    </template>
+</template>

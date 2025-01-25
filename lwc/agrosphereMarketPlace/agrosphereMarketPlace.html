@@ -1,0 +1,183 @@
+<template>
+    <div class="marketplace-container">
+        <!-- Header Section -->
+        <header class="marketplace-header">
+            <h1>AgroSphere Marketplace</h1>
+            <p>Buy, Sell, or Lease agricultural items with ease.</p>
+        </header>
+
+        <!-- Search and Filter Section -->
+        <section class="search-filter-section">
+            <div class="search-bar">
+                <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search for items..."
+                    oninput={handleSearch}
+                />
+                <lightning-icon icon-name="utility:search" alternative-text="Connected" size="x-small"
+                    title="large size">
+                </lightning-icon>
+            </div>
+            <select class="category-filter" onchange={handleCategoryFilter}>
+                <option value="All">All Categories</option>
+                <option value="Crops">Crops</option>
+                <option value="Equipments">Equipments</option>
+                <option value="Supplies">Supplies</option>
+            </select>
+            <div class="checkbox">
+                <input id="check1" type="checkbox" name="LeaseItem" value="true" onchange={handleLeaseCheckbox}>
+                <label for="check1">Show items for Lease only</label>
+            </div>
+            <lightning-button-icon icon-name="utility:refresh" size="medium" alternative-text="Refresh"
+                class="slds-m-left_xx-small" onclick={refreshData}></lightning-button-icon>
+
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-grid">
+            <template if:true={filteredProducts}>
+                <template for:each={filteredProducts} for:item="product">
+                    <article key={product.id} class="product-card">
+                        <div class="product-image">
+                            <img src={product.image} alt={product.name} />
+                        </div>
+                        <div class="product-info">
+                            <h3>{product.name}</h3>
+                            <p class="price">{product.price}</p>
+                            <p class="category">{product.category}</p>
+                            <p if:true={product.isLease} class="lease-detail">Lease item for {product.tenure} month/s</p>
+                            <button
+                                class="view-details-btn"
+                                onclick={handleViewDetails}
+                                data-id={product.id}
+                                disabled={product.isUnderReview}
+                            >
+                                View Details
+                            </button>
+                            <div class="overlay" lwc:if={product.isUnderReview}>
+                                <div class="overlay-text">Agreement is under review</div>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </template>
+            <template if:false={filteredProducts}>
+                <div class="no-products">
+                    <p>No items found! Adjust your search or filters.</p>
+                </div>
+            </template>
+        </section>
+
+        <!-- Add Product Section -->
+        <section class="add-product">
+            <button class="add-product-btn" onclick={handleAddProduct}>
+                Post Your Ad
+            </button>
+        </section>
+    </div>
+
+
+    <div class="custom-modal" if:true={isModalOpen}>
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2 class="custom-modal-title">{selectedProduct.name}</h2>
+                <button class="custom-modal-close" onclick={closeModal} title="Close">✕</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+                <template if:true={isDetails}>
+                    <div class="custom-modal-content">
+                        <div class="product-image">
+                            <img src={selectedProduct.image} alt={selectedProduct.name} />
+                        </div>
+                        <div class="product-details">
+                            <p><strong>Price:</strong> ₹{selectedProduct.price}</p>
+                            <p><strong>Category:</strong> {selectedProduct.category}</p>
+                            <p><strong>Description:</strong>{selectedProduct.desc}</p>
+                        </div>
+                    </div>
+
+                </template>
+
+                <template if:true={isGenerating}>
+                    <div class="spinner-container">
+                        <div class="custom-spinner"></div>
+                        <p class="status-message">Creating your document... This may take a moment.</p>
+                    </div>
+                </template>
+
+                <template if:true={isSigning}>
+                    <div class="spinner-container">
+                        <div class="custom-spinner"></div>
+                        <p class="status-message">Your agreement is almost ready! Please complete the signing.</p>
+                    </div>
+                </template>
+
+                <template if:true={isThankYou}>
+                    <!-- <p class="thank-you-message">Thanks for reading the agreement and going through it.</p>
+                    <p class="thank-you-message">You can check your agreement in the "My Purchases" section.</p>
+                    <p class="thank-you-message">We are currently verifying your signature. If you haven't signed it, the purchase will be 
+                    automatically canceled within the next hour.</p>
+                    <p class="thank-you-message">If your signature is verified, the agreement will be sent to the farmer for further processing.</p>
+                    <p class="thank-you-message"> If you haven't signed the agreement yet, you can sign it from the "My Purchases" section. Please remember to sign it within the next hour.</p>
+                 -->
+                    <div class="modal-body-thankyou">
+                        <h2>Thank You!</h2>
+                        <p class="highlight">Thanks for reading the agreement and going through it.</p>
+
+                        <h3>Your Next Steps:</h3>
+                        <ul>
+                            <li>
+                                <strong>Check Status:</strong> You can view your agreement in the
+                                <a href="/agrospehre/s/my-purchases" class="link"> My Purchases</a> section.
+                            </li>
+                            <li>
+                                <strong>Signature Verification:</strong>
+                                We are currently verifying your signature.
+                            </li>
+                            <li>
+                                <strong>Important:</strong>
+                                If you haven't signed the agreement, the purchase will be automatically canceled within
+                                the next hour.
+                            </li>
+                        </ul>
+
+                        <h3>Need to Sign?</h3>
+                        <p>
+                            If you haven’t signed the agreement yet, you can do so from the <a
+                                href="/agrospehre/s/my-purchases" class="link"> My Purchases</a> section.
+                            Please remember to sign it within the next hour.
+                        </p>
+
+                        <div class="info-box">
+                            <strong>Note:</strong> If your signature is verified, the agreement will be sent to the
+                            farmer for further processing.
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <template if:true={isDetails}>
+                    <button if:true={isguest} class="custom-button buy-now" onclick={loginNow}>Login Now to buy this</button>
+                    <button if:false={isguest} class="custom-button buy-now" data-id={selectedProduct.id} onclick={handleBuyNow}>Buy Now</button>
+                    <button class="custom-button cancel" onclick={closeModal}>Cancel</button>
+                </template>
+                <template if:true={isThankYou}>
+                    <button class="custom-button navigate" onclick={handleNavigateToMyPurchase}>Navigate to Purchases</button>
+                    <button class="custom-button cancel" onclick={closeModal}>Cancel</button>
+                </template>
+            </div>
+        </div>
+        <div class="modal-overlay"></div>
+    </div>
+
+
+
+
+</template>

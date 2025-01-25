@@ -1,0 +1,214 @@
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 3rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+	 animation: fadeIn 1s ease-in;
+}
+
+/* Animation for fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+/* Form Layout */
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+/* Form Item */
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    color: #555;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+input,
+textarea,
+select {
+    padding: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    outline: none;
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    min-height: 160px;
+    font-size: 1.1rem;
+}
+
+/* Flex Group */
+.form-group {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Submit Button */
+.submit-button {
+    padding: 1rem 2.5rem;
+    background: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.submit-button:disabled {
+    background-color: #dcdcdc;
+    cursor: not-allowed;
+    color:black;
+}
+
+.submit-button:hover:enabled {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Error Messages */
+.error-messages {
+    background-color: #fffcf6;
+    border: 1px solid #f28b82;
+    color: #e53935;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.error-messages ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.error-messages li {
+    list-style-type: disc;
+    margin-bottom: 0.5rem;
+}
+
+/* Input Focus Effect */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Form Transition */
+input,
+select,
+textarea {
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects on Form Items */
+.form-item:hover {
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem;
+    }
+
+    .product-form {
+        gap: 1.2rem;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .submit-button {
+        width: auto;
+    }
+}
+
+.slds-modal__container{
+    padding: 2rem;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slds-modal__container h2 {
+    color: #2b5c2d;
+    font-size: 2.5rem;
+    font-family: fantasy;
+}
+
+.slds-modal__container p {
+    font-size: 19px;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.slds-modal__container strong{
+    font-weight: bold;
+    color: #4caf50;
+    font-style: italic;
+}
+
+.spins::after {
+    position: absolute;
+    content: attr(data-text);
+    width: 100%;
+    text-align: center;
+    top: calc(50% + 3em);
+    font-weight: bold;
+    color:grey
+}

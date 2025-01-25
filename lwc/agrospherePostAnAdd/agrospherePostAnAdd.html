@@ -1,0 +1,196 @@
+<template>
+    <div class="container">
+        <div lwc:if={spinner}>
+            <h1>Please wait while we are processing..</h1>
+            <lightning-spinner class="spins" data-text={spinnertext} alternative-text="Loading" variant="brand"
+                size="large"></lightning-spinner>
+        </div>
+        <div lwc:else>
+            <h1>Post Your Product</h1>
+            <template if:true={hasError}>
+                <div class="error-messages">
+                    <ul>
+                        <template for:each={errorMessages} for:item="error" for:index="index">
+                            <li key={error}>{error}</li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+            <form class="product-form">
+                <!-- Product Title -->
+                <div class="form-item">
+                    <label for="productTitle">Product Title</label>
+                    <input
+                    id="productTitle"
+                    type="text"
+                    placeholder="Enter product title"
+                    value={productTitle}
+                    name="productTitle"
+                    onchange={handleInputChange}
+                    required
+                />
+                </div>
+
+                <!-- Product Description -->
+                <div class="form-item">
+                    <label for="productDescription">Product Description</label>
+                    <textarea
+                    id="productDescription"
+                    placeholder="Enter product description"
+                    value={productDescription}
+                    name="productDescription"
+                    onchange={handleInputChange}
+                    required>
+                </textarea>
+                </div>
+
+                <!-- Category -->
+                <div class="form-item">
+                    <label for="category">Category</label>
+                    <select
+                    id="category"
+                    value={category}
+                    name="category"
+                    onchange={handleInputChange}>
+                    <option value="" disabled selected>Select a category</option>
+                    <template for:each={categories} for:item="cat">
+                        <option key={cat.value} value={cat.value}>{cat.label}</option>
+                    </template>
+                </select>
+                </div>
+
+                <!-- Price -->
+                <div class="form-item">
+                    <label for="productPrice">Price (₹)</label>
+                    <input
+                    id="productPrice"
+                    type="text"
+                    placeholder="Enter price"
+                    value={productPrice}
+                    name="productPrice"
+                    onchange={handleInputChange}
+                    required
+                />
+                </div>
+
+                <!-- Seller Details -->
+                <div class="form-group">
+                    <div class="form-item">
+                        <label for="sellerName">Full Name</label>
+                        <input
+                        id="sellerName"
+                        type="text"
+                        placeholder="Enter your name"
+                        value={sellerName}
+                        name="sellerName"
+                        onchange={handleInputChange}
+                        required
+                    />
+                    </div>
+                    <div class="form-item">
+                        <label for="sellerAddress">Address</label>
+                        <input
+                        id="sellerAddress"
+                        type="text"
+                        placeholder="Enter your address"
+                        value={sellerAddress}
+                        name="sellerAddress"
+                        onchange={handleInputChange}
+                        required
+                    />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-item">
+                        <label for="sellerEmail">Email</label>
+                        <input
+                        id="sellerEmail"
+                        type="email"
+                        placeholder="Enter your email"
+                        value={sellerEmail}
+                        name="sellerEmail"
+                        onchange={handleInputChange}
+                        required
+                    />
+                    </div>
+                    <div class="form-item">
+                        <label for="sellerPhone">Phone</label>
+                        <input
+                        id="sellerPhone"
+                        type="tel"
+                        placeholder="Enter your phone number E.g - +978888888888"
+                        value={sellerPhone}
+                        name="sellerPhone"
+                        onchange={handleInputChange}
+                        required
+                    />
+                    </div>
+                </div>
+
+                <!-- Transaction Type -->
+                <div class="form-item">
+                    <label for="transactionType">Transaction Type</label>
+                    <select
+                    id="transactionType"
+                    value={transactionType}
+                    name="transactionType"
+                    onchange={handleTransactionChange}>
+                    <option value="" disabled selected>Select transaction type</option>
+                    <template for:each={transactionTypes} for:item="type">
+                        <option key={type.value} value={type.value}>{type.label}</option>
+                    </template>
+                </select>
+                </div>
+
+                <!-- Lease Tenure (Visible Only if Lease is Selected) -->
+                <template if:true={showLeaseTenure}>
+                    <div class="form-item">
+                        <label for="leaseTenure">Lease Tenure (in months)</label>
+                        <input
+                        id="leaseTenure"
+                        type="number"
+                        placeholder="Enter lease tenure"
+                        value={leaseTenure}
+                        name="leaseTenure"
+                        onchange={handleInputChange}
+                    />
+                    </div>
+                </template>
+
+                <!-- Submit Button -->
+                <div class="form-item">
+                    <button type="button" class="submit-button" disabled={spinner} onclick={handleSubmit}>Post Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <template if:true={showModal}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+            onclick={closeModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+            </lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Thank You for Your
+                        Interest!</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+
+                    <p>Your product has been successfully submitted. Our admin team will now review it for verification.
+                        You will receive updates at the contact information you provided.</p>
+                    <p>For future reference, please keep your <strong>Product/Tracking ID: {trackingId}</strong>. This
+                        ID will be used for any inquiries or follow-ups related to your listing.</p>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -1,0 +1,177 @@
+/* Container for the entire process */
+.process-container {
+    font-family: 'Poppins', sans-serif;
+    /* max-width: 950px; */
+	/* margin-top:10%; */
+    /* margin: 0 auto; */
+    padding: 40px;
+    background: linear-gradient(135deg, #ffffff, #f0f8ff);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Header */
+.process-container h2 {
+    font-size: 2.8em;
+    color: #2a9d8f;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.process-container p {
+    font-size: 1.3em;
+    color: #6a6a6a;
+    margin-bottom: 35px;
+}
+
+/* Steps Section */
+.steps {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 45px;
+    transition: all 0.3s ease-in-out;
+}
+
+.step {
+    text-align: center;
+    padding: 30px;
+    width: 30%;
+    border: 3px solid #eaeaea;
+    border-radius: 20px;
+    background: #f9f9f9;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.step:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(42, 157, 143, 0.2);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.step.active {
+    background-color: #e0f7fa;
+    border-color: #2a9d8f;
+    box-shadow: 0 12px 40px rgba(42, 157, 143, 0.2);
+}
+
+.step.active:before {
+    background: rgba(42, 157, 143, 0.3);
+}
+
+.step h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 20px 0;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.step p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background-color: #eaeaea;
+    margin: 30px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #2a9d8f;
+    border-radius: 8px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Button Style */
+.next-button {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.next-button:hover {
+    background-color: #21867a;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.next-button:focus {
+    outline: none;
+}
+
+/* Icon Styling */
+lightning-icon {
+    margin-bottom: 15px;
+    color: #2a9d8f;
+    transition: transform 0.3s ease;
+}
+
+.step:hover lightning-icon {
+    transform: rotate(360deg);
+}
+
+/* Animation for fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .steps {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step {
+        width: 80%;
+        margin-bottom: 40px;
+    }
+
+    .next-button {
+        width: 100%;
+        padding: 16px 20px;
+    }
+
+    .process-container h2 {
+        font-size: 2.4em;
+    }
+
+    .process-container p {
+        font-size: 1.2em;
+    }
+}

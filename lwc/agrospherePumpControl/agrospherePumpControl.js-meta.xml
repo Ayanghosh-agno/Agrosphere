@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57.0</apiVersion>
+	<isExposed>true</isExposed>
+	<targets>
+		<target>lightning__RecordPage</target>
+		<target>lightning__AppPage</target>
+		<target>lightning__HomePage</target>
+		<target>lightningCommunity__Page</target>
+		<target>lightningCommunity__Default</target>
+		<target>lightningCommunity__Page_Layout</target>
+		<target>lightningCommunity__Theme_Layout</target>
+	</targets>
+	<targetConfigs>
+            <targetConfig targets="lightningCommunity__Default,lightning__HomePage,lightning__RecordPage,lightning__AppPage">
+     
+           <property name="applianceName" type="String" label="Appliance Name" description="Add Your Appliance Name" ></property>
+                   <property name="pinNumber" type="String" label="Digital Pin Number" description="Add Your Appliance Attached Digital Pin Number" ></property>
+
+          </targetConfig>
+        </targetConfigs>
+</LightningComponentBundle>

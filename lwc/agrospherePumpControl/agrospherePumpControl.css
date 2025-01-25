@@ -1,0 +1,52 @@
+.water-pump-control {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.control-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styling for the pump control button */
+.control-section button {
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Styling when pump is off */
+.control-section button.off {
+    background-color: #3cb371; /* Green */
+}
+
+/* Styling when pump is on */
+.control-section button.on {
+    background-color: #ff6347; /* Red */
+}
+
+.control-section button:hover {
+    filter: brightness(1.2);
+}
+
+.usage-section p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}

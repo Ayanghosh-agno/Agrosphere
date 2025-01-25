@@ -1,0 +1,66 @@
+<template>
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Welcome to AgroSphere</h2>
+            <p class="hero-subtitle">Empowering Farmers with Smarter Tools and Insights</p>
+            <div class="hero-buttons">
+                <button if:true={isguest} class="cta-btn primary" onclick={loginNow}>Login Now</button>
+                
+                <button if:false={isguest} class="cta-btn primary" onclick={goToDashboard}>Manage Your Farm</button>
+                <button if:false={isguest} class="cta-btn secondary" onclick={goToMarketplace}>Explore Marketplace</button>
+                <button if:false={isguest} class="cta-btn secondary" onclick={goToAIInsights}>Get AI-Driven Advice</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src={bodypic1} alt="Farming Illustration" class="hero-banner" />
+        </div>
+    </section>
+    <div class="features-section">
+        <h2 class="section-title">Why Choose AgroSphere?</h2>
+        <div class="features-grid">
+            <div class="feature-card" onclick={handleWeatherClick}>
+                <div class="icon icon-weather">
+                    <lightning-icon icon-name="utility:calculated_insights" alternative-text="Weather Insights" variant="inverse">
+                    </lightning-icon>
+                </div>
+                <h3>Weather Insights</h3>
+                <p>Get real-time weather updates and stay ahead of changing conditions.</p>
+            </div>
+            <div class="feature-card" onclick={handleAiAdviceClick}>
+                <div class="icon icon-advice">
+                    <lightning-icon icon-name="utility:einstein" alternative-text="AI-Driven Advice" variant="inverse">
+                    </lightning-icon>
+                </div>
+                <h3>AI-Driven Advice</h3>
+                <p>Receive tailored recommendations for your farm's success.</p>
+            </div>
+            <div class="feature-card" onclick={handleFarmManagementClick}>
+                <div class="icon icon-management">
+                    <lightning-icon icon-name="utility:settings" alternative-text="Farm Management" variant="inverse">
+                    </lightning-icon>
+                </div>
+                <h3>Farm Management</h3>
+                <p>Control pumps, motors, and lights from your dashboard.</p>
+            </div>
+            <div class="feature-card" onclick={handleMarketplaceClick}>
+                <div class="icon icon-marketplace">
+                    <lightning-icon icon-name="utility:market" alternative-text="Marketplace" variant="inverse">
+                    </lightning-icon>
+                </div>
+                <h3>Marketplace</h3>
+                <p>Buy or sell crops and equipment with ease.</p>
+            </div>
+        </div>
+    </div>
+    <div class="cta-section">
+        <h2 class="cta-title">Ready to Take Your Farm to the Next Level?</h2>
+        <div class="cta-buttons">
+            <button if:true={isguest} class="cta-btn dashboard-btn" onclick={loginNow}>Login Now</button>
+            <button if:false={isguest} class="cta-btn dashboard-btn" onclick={goToDashboard}>Explore Your Dashboard</button>
+            <button if:false={isguest} class="cta-btn marketplace-btn" onclick={goToMarketplace}>Visit the Marketplace</button>
+        </div>
+        <div class="cta-image">
+            <img src={bodypic2} alt="Farm Dashboard" />
+        </div>
+    </div>
+</template>
