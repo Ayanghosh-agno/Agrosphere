@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to AgroSphere</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .email-header {
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+        }
+        .email-header img {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .email-body {
+            padding: 20px;
+            text-align: center;
+        }
+        .email-body h2 {
+            color: #4caf50;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .email-body p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .email-button {
+            display: inline-block;
+            background-color: #4caf50;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .email-button:hover {
+            background-color: #388e3c;
+        }
+        .email-footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #777777;
+        }
+        .email-footer a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+        .email-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header Section -->
+        <div class="email-header">
+            <img src="	https://agno-dev-ed.develop.my.site.com/agrospehre/resource/1736275627000/AgrosphereLogo" alt="AgroSphere Logo" />
+            <h1>Welcome to AgroSphere!</h1>
+        </div>
+        <!-- Body Section -->
+        <div class="email-body">
+            <h2>Hello {!Receiving_User.FirstName},</h2>
+            <p>
+                We’re thrilled to have you on board! AgroSphere is your gateway to sustainable farming solutions and a thriving marketplace for farmers and buyers.
+            </p>
+            <p>
+                Start exploring innovative tools, get personalized recommendations, and connect with a community dedicated to modern agriculture.
+            </p>
+            <a href="{!Community_Url}" class="email-button">Get Started</a>
+        </div>
+        <!-- Footer Section -->
+        <div class="email-footer">
+            <p>
+                Need help? Visit our <a href="[Support Link]">Support Center</a> or <a href="[Contact Link]">Contact Us</a>.
+            </p>
+            <p>&copy; 2025 AgroSphere. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

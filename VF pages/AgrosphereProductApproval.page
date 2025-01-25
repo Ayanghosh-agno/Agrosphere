@@ -1,0 +1,74 @@
+<apex:page controller="AgrosphereProductApprovalController" renderAs="pdf" showHeader="false" sidebar="false">
+    <div style="width: 95%; margin: auto; padding: 20px; border: 2px solid #0072ff; border-radius: 10px; font-family: Arial, sans-serif; line-height: 1.5; font-size: 12px; color: #333;">
+        
+        <div style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+            <img src="{!URLFOR($Resource.AgrosphereLogo)}" alt="Agrosphere Logo" style="width: 100px; height: auto;"/>
+        </div>
+        
+        <!-- Header Section -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h2 style="color: #0072ff;">Product Approval Request : {!marketId}</h2>
+            <p style="font-size: 14px;">Date: {!todayDate}</p>
+        </div>
+        
+        <!-- Farmer Details -->
+        <div>
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Farmer Details</h3>
+            <p><strong>Name:</strong> {!farmerName}</p>
+            <p><strong>Contact Information:</strong> {!farmerContact}</p>
+            <p><strong>Address Information:</strong> {!farmerAddress}</p>
+        </div>
+        
+        <!-- Product Details -->
+        <div style="margin-top: 15px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Product Details</h3>
+            <p><strong>Product Name:</strong> {!productName}</p>
+            <p><strong>Description:</strong> {!productDescription}</p>
+            <p><strong>Price:</strong> {!productPrice}</p>
+            <!--
+<apex:outputPanel rendered="{!productQuantity != null}">
+<p><strong>Quantity:</strong> {!productQuantity}</p>
+</apex:outputPanel> -->
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Transaction Details</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tbody>
+                    <tr>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;"><strong>Transaction Type:</strong></td>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">
+                            {!transactionType}
+                        </td>
+                    </tr>
+                    <apex:outputPanel rendered="{!isLease}">
+                        <tr>
+                            <td style="padding: 8px; text-align: left; border: 1px solid #ddd;"><strong>Lease Duration (Months):</strong></td>
+                            <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">{!leaseDuration}</td>
+                        </tr>
+                    </apex:outputPanel>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        
+        
+        <!-- Admin Verification Section -->
+        <div style="margin-top: 20px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Admin Verification</h3>
+            <p>
+                By signing below, I, the undersigned, confirm that the product details provided above 
+                have been verified and approved for listing in the marketplace.
+            </p>
+            <p><strong>Admin Name: AYAN GHOSH</strong></p>
+            <p><strong>Admin Email: ayanghosh974@gmail.com</strong></p>
+            <div style="margin-top: 50px;">
+                <p style="text-align: center; font-size: 14px;">
+                    <strong>Signature:</strong> __________________________
+                </p>
+            </div>
+            <p><strong>Signed On:</strong> _______________</p>
+        </div>
+    </div>
+</apex:page>

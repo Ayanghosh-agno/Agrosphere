@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Condition Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .email-header {
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .email-body {
+            padding: 20px;
+        }
+        .email-body h2 {
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+        .sensor-data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .sensor-data-table th, .sensor-data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .sensor-data-table th {
+            background-color: #f4f4f4;
+            color: #333333;
+            font-weight: bold;
+        }
+        .email-footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #777777;
+        }
+        .email-footer a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+        .email-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <h1>Soil & Environmental Condition Update</h1>
+        </div>
+
+        <!-- Body -->
+        <div class="email-body">
+            <h2>Hello {!User.FirstName},</h2>
+            <p>Here is the latest update on your field's soil and environmental conditions. Use this information to plan your farming activities effectively:</p>
+
+            <!-- Sensor Data Table -->
+ <table class="sensor-data-table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Recommended Range</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Atmosphere Temperature</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Atmosphere_Temperature__c} °C</td>
+            <td>20°C - 35°C</td>
+        </tr>
+   <tr>
+            <td>Atmosphere Humidity</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Atmosphere_Humidity__c} %</td>
+            <td>70% - 80%</td>
+        </tr>        <tr>
+            <td>Light Intensity</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Light_Intensity__c} LUX</td>
+            <td>5000 - 10000 lux</td>
+        </tr>
+        <tr>
+            <td>Rain Percentage</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Rain_Percentage__c} %</td>
+            <td>10% - 60%</td>
+        </tr>
+        <tr>
+            <td>Soil Electric Conductivity</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Soil_Electric_Conductivity__c} u/cm</td>
+            <td>200 - 2000 µS/cm</td>
+        </tr>
+        <tr>
+            <td>Soil Moisture Percentage</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Soil_Moisture_Percentage__c} %</td>
+            <td>20% - 50%</td>
+        </tr>
+        <tr>
+            <td>Soil Nitrogen</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Soil_Nitrogen__c} mg/Kg</td>
+            <td>30 - 50 mg/kg</td>
+        </tr>
+        <tr>
+            <td>Soil Phosphorus</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Soil_Phosphorus__c} mg/Kg</td>
+            <td>20 - 40 mg/kg</td>
+        </tr>
+        <tr>
+            <td>Soil Potassium</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Soil_Potassium__c} mg/Kg</td>
+            <td>100 - 200 mg/kg</td>
+        </tr>
+        <tr>
+            <td>Soil pH</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Soil_Ph__c}</td>
+            <td>6.0 - 7.5</td>
+        </tr>
+        <tr>
+            <td>Soil Temperature</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Soil_Temperature__c} °C</td>
+            <td>15°C - 30°C</td>
+        </tr>
+        <tr>
+            <td>Transmitter Battery</td>
+            <td>{!Agrosphere_24_Hour_Data__c.Transmitter_Battery__c} %</td>
+            <td>N/A</td>
+        </tr>
+    </tbody>
+</table>
+
+
+            <p>We hope this update helps you take informed decisions. For any assistance, feel free to reach out to us.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <p>Need help? Visit our <a href="https://agno-dev-ed.develop.my.site.com/agrospehre/s/contact-us">Support Center</a>.</p>
+            <p>&copy; 2025 AgroSphere. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

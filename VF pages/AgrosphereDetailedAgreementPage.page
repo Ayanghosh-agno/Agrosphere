@@ -1,0 +1,125 @@
+<apex:page controller="AgrosphereDetailedAgreementPageController" renderAs="pdf" showHeader="false" sidebar="false">
+    <div style="width: 95%; margin: 0; padding: 15px; border: 2px solid #0072ff; border-radius: 15px; background-color: #ffffff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); font-size: 12px; line-height: 1.4;">
+        
+        <!-- Logo (top left corner) -->
+        <div style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+            <img src="{!URLFOR($Resource.AgrosphereLogo)}" alt="Agrosphere Logo" style="width: 100px; height: auto;"/>
+        </div>
+        
+        <!-- Agreement Header -->
+        <h1 style="color: #0072ff; text-align: center; margin-top: 60px;">Agrosphere Agreement for Transaction </h1>
+        
+        <!-- Agreement Details Section -->
+        <div style="margin-top: 10px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Agreement Details</h3>
+            <div style="display: flex; justify-content: space-between;flex-direction: row">
+                <div style="width: 50%; padding-right: 10px;">
+                    <p style="margin: 5px 0;"><strong>Agreement ID:</strong> {!agreementName}</p>
+                    <p style="margin: 5px 0;"><strong>Date:</strong> {!currentDate}</p>
+                </div>
+                
+                <!-- Conditional Rendering for Payment Due Date and Leased Upto -->
+                <div style="display: flex;flex-direction: column;align-items: flex-start;margin-left:490px;margin-top:-44px">
+                    <p style="margin: 5px 0;"><strong>Payment Due Date:</strong> {!paymentDueDate}</p>
+                    <p style="margin: 5px 0;"><apex:outputPanel rendered="{!isLease}"><strong>Leased Upto:</strong> {!leasedUpto}</apex:outputPanel></p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Product Details</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background-color: #f1f1f1;">Product Name</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">{!productName}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; background-color: #f1f1f1;">Description</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">{!productDescription}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 2px; border: 1px solid #ddd; font-weight: bold; background-color: #f1f1f1;">Price</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">{!productPrice}</td>
+                </tr>
+            </table>
+        </div>
+        
+        
+        
+        <!-- Parties Involved Section -->
+        <div style="margin-top: 15px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Parties Involved</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd; background-color: #f1f1f1;">Role</th>
+                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd; background-color: #f1f1f1;">Name</th>
+                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd; background-color: #f1f1f1;">Contact</th>
+                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd; background-color: #f1f1f1;">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Buyer</td>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">{!buyerName}</td>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">{!buyerContact}</td>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">{!buyerAddress}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Farmer</td>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">{!farmerName}</td>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">{!farmerContact}</td>
+                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">{!farmerAddress}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Terms Section -->
+        <div style="margin-top: 15px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Terms and Conditions</h3>
+            <p style="margin: 5px 0;font-size: 11px; ">1. The buyer agrees to purchase or lease the agricultural product listed under this agreement.</p>
+            <p style="margin: 5px 0;font-size: 11px; ">2. The farmer guarantees the product quality as per the description provided.</p>
+            <p style="margin: 5px 0;font-size: 11px; ">3. The transaction will be completed upon payment confirmation and product delivery.</p>
+            <p style="margin: 5px 0;font-size: 11px; ">4. Both parties must comply with local and national agricultural trade regulations.</p>
+        </div>
+        
+        <!-- Agreement Body Section -->
+        <div style="margin-top: 15px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Agreement Body</h3>
+            
+            <apex:outputPanel rendered="{!isBuy}">
+                <p style="margin: 5px 0; font-size: 11px;">
+                    <strong>For Buying:</strong> The Buyer hereby promises to purchase the agricultural item (land or crop) from the Farmer. The Buyer shall make all necessary payments within the due date. Upon successful payment, the Buyer agrees that the item must be transferred or delivered according to the schedule agreed upon in this contract. Failure to make payments on time will result in penalties or voiding of this agreement.
+                </p>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!isLease}">
+                <p style="margin: 5px 0; font-size: 11px;"><strong>For Leasing:</strong> The Buyer hereby agrees to lease the agricultural item from the Farmer. The item will be leased for the specified time frame, and upon expiration, the Buyer must return the item or negotiate an extension or renewal. The Buyer will bear any cost incurred during the lease period. In case of any damage to the leased item, the Buyer will be responsible for the repairs or replacement costs.</p>
+            </apex:outputPanel>
+            
+            
+        </div>
+        
+        <!-- Payment Details Section
+        <div style="margin-top: 15px;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Payment Details</h3>
+            <p style="margin: 5px 0;"><strong>Amount:</strong> {!amount}</p>
+            <p style="margin: 5px 0;"><strong>Payment Method:</strong> {!paymentMethod}</p>
+            <p style="margin: 5px 0;"><strong>Due Date:</strong> {!paymentDueDate}</p>
+        </div>
+ -->
+        
+        <!-- Signature Section -->
+        <div style="margin-top: 20px; text-align: center;">
+            <h3 style="color: #0056b3; border-bottom: 2px solid #0072ff; padding-bottom: 5px;">Signatures</h3>
+            <div style="display: inline-block; margin: 20px; text-align: center;">
+                <div style="border-top: 1px solid #333; width: 200px; margin: 10px auto;"></div>
+                <div style="font-size: 14px; color: #555;">Buyer Signature</div>
+            </div>
+            <div style="display: inline-block; margin: 20px; text-align: center;">
+                <div style="border-top: 1px solid #333; width: 200px; margin: 10px auto;"></div>
+                <div style="font-size: 14px; color: #555;">Farmer Signature</div>
+            </div>
+        </div>
+    </div>
+</apex:page>

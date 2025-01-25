@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Welcome Email Agrosphere</name>
+    <style>none</style>
+    <subject>Welcome to AGROSPHERE</subject>
+    <textOnly>Welcome to AgroSphere
+
+Welcome to AgroSphere!
+Hello [User&apos;s Name],
+
+We’re thrilled to have you on board! AgroSphere is your gateway to sustainable farming solutions and a thriving marketplace for farmers and buyers.
+
+Start exploring innovative tools, get personalized recommendations, and connect with a community dedicated to modern agriculture.
+
+Get Started
+
+Need help? Visit our Support Center or Contact Us.
+
+© 2025 AgroSphere. All rights reserved.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
