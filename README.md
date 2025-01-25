@@ -113,22 +113,22 @@ By equipping farmers with tools to monitor, manage, and monetize their agricultu
 
 - **[DocuSign Click API](https://developers.docusign.com/docs/click-api/)**
   - Used for presenting and capturing user consent during the product posting process in the marketplace.
-  - Ensures that users agree to terms and conditions before submitting their products. [Learn More](https://developers.docusign.com/docs/click-api/)
+  - Ensures that users agree to terms and conditions before submitting their products. (Used out-of-the-box click api calling format)
 
 - **[DocuSign eSignature API](https://developers.docusign.com/docs/esign-rest-api/)**
   - Facilitates secure and seamless signing of purchase and lease agreements between buyers and sellers in the marketplace.
   - Handles admin approvals for posted products by generating and routing approval documents.
-  - Enables signing completion notifications for users and sellers. [Learn More](https://developers.docusign.com/docs/esign-rest-api/)
+  - Enables signing completion notifications for users and sellers. [Code Pointer - Line 17 to Line 332](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/apex%20classes/DocusignCalloutController.cls)
 
 - **[DocuSign WebForms API](https://developers.docusign.com/docs/web-forms-api/)**
   - Integrated into the user registration process to dynamically capture user details.
-  - Automatically generates documents for signing to confirm user registration and terms acceptance. [Learn More](https://developers.docusign.com/docs/web-forms-api/)
+  - Automatically generates documents for signing to confirm user registration and terms acceptance. [Code Pointer](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/apex%20classes/DocuSignWebhook.cls)
 
 - **[DocuSign Webhooks](https://developers.docusign.com/platform/webhooks/)**
   - Tracks real-time updates on the status of signing agreements.
   - Automatically triggers notifications or updates in AgroSphere, such as:
     - Notifying users or sellers about agreement completions or pending actions.
-    - Capturing real-time registration information updates. [Learn More](https://developers.docusign.com/platform/webhooks/)
+    - Capturing real-time registration information updates. [Code Pointer](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/apex%20classes/DocuSignWebhook.cls)
 
 ---
 
