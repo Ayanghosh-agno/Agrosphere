@@ -319,7 +319,7 @@ AgroSphere keeps users informed with timely notifications:
 
 ### Solution Demo Video <a name="solution-demo-video"></a>
 
-[![Solution Demo Video](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/Agrosphere%20Readme%20Images/Agrosphere-Thumbnail.png)]()
+[![Solution Demo Video](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/Agrosphere%20Readme%20Images/Agrosphere-Thumbnail.png)](https://youtu.be/xQjJthr0l7w)
 
 ---
 
