@@ -122,13 +122,13 @@ By equipping farmers with tools to monitor, manage, and monetize their agricultu
 
 - **[DocuSign WebForms API](https://developers.docusign.com/docs/web-forms-api/)**
   - Integrated into the user registration process to dynamically capture user details.
-  - Automatically generates documents for signing to confirm user registration and terms acceptance. [Code Pointer](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/apex%20classes/DocuSignWebhook.cls)
+  - Automatically generates documents for signing to confirm user registration and terms acceptance. [Code Pointer - Line 332 to Line 404](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/apex%20classes/DocuSignWebhook.cls)
 
 - **[DocuSign Webhooks](https://developers.docusign.com/platform/webhooks/)**
   - Tracks real-time updates on the status of signing agreements.
   - Automatically triggers notifications or updates in AgroSphere, such as:
     - Notifying users or sellers about agreement completions or pending actions.
-    - Capturing real-time registration information updates. [Code Pointer](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/apex%20classes/DocuSignWebhook.cls)
+    - Capturing real-time registration information updates. [Code Pointer - Full class](https://github.com/Ayanghosh-agno/Agrosphere/blob/main/apex%20classes/DocuSignWebhook.cls)
 
 ---
 
